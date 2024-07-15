@@ -16,10 +16,13 @@ function startCountdown() {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        animateValue("days", days);
-        animateValue("hours", hours);
-        animateValue("minutes", minutes);
-        animateValue("seconds", seconds);
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+
+        changeTimerBackgroundColor();
+
 
         if (distance < 0) {
             clearInterval(countdownInterval);
@@ -28,21 +31,29 @@ function startCountdown() {
     }, 1000);
 }
 
-function animateValue(id, end) {
-    const obj = document.getElementById(id);
-    const start = parseInt(obj.innerHTML);
-    const range = end - start;
-    let current = start;
-    const increment = end > start ? 1 : -1;
-    const stepTime = Math.abs(Math.floor(1000 / range));
-    const timer = setInterval(function() {
-        current += increment;
-        obj.innerHTML = current;
-        if (current == end) {
-            clearInterval(timer);
-        }
-    }, stepTime);
+function changeTimerBackgroundColor() {
+    const color = document.getElementById("themeColor").value;
+    document.querySelectorAll('.time-section').forEach(el => {
+        el.style.backgroundColor = color;
+    });
 }
+
+
+// function animateValue(id, end) {
+//     const obj = document.getElementById(id);
+//     const start = parseInt(obj.innerHTML);
+//     const range = end - start;
+//     let current = start;
+//     const increment = end > start ? 1 : -1;
+//     const stepTime = Math.abs(Math.floor(1000 / range));
+//     const timer = setInterval(function() {
+//         current += increment;
+//         obj.innerHTML = current;
+//         if (current == end) {
+//             clearInterval(timer);
+//         }
+//     }, stepTime);
+// }
 
 function changeTheme() {
     const color = document.getElementById("themeColor").value;
