@@ -79,15 +79,16 @@ button:hover {
     cursor: pointer;
 }
 
-@media (max-width: 600px){
-     .container{
+@media (max-width: 600px) {
+    .container {
         padding: 1rem;
-     }
+    }
 
-     .time-section{
+    .time-section {
         min-width: 80px;
-     }
+    }
 }
+
 @keyframes pulse {
     0% {
         transform: scale(1);

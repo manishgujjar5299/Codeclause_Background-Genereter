@@ -16,16 +16,10 @@ function startCountdown() {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
-
-        // Add animation to seconds
-        document.getElementById("seconds").style.transform = "scale(1.1)";
-        setTimeout(() => {
-            document.getElementById("seconds").style.transform = "scale(1)";
-        }, 500);
+        animateValue("days", days);
+        animateValue("hours", hours);
+        animateValue("minutes", minutes);
+        animateValue("seconds", seconds);
 
         if (distance < 0) {
             clearInterval(countdownInterval);
@@ -40,7 +34,7 @@ function animateValue(id, end) {
     const range = end - start;
     let current = start;
     const increment = end > start ? 1 : -1;
-    const stepTime = Math.abs(Math.floor(500 / range));
+    const stepTime = Math.abs(Math.floor(1000 / range));
     const timer = setInterval(function() {
         current += increment;
         obj.innerHTML = current;
@@ -49,6 +43,7 @@ function animateValue(id, end) {
         }
     }, stepTime);
 }
+
 function changeTheme() {
     const color = document.getElementById("themeColor").value;
     document.querySelectorAll('.time-section').forEach(el => {
@@ -57,7 +52,6 @@ function changeTheme() {
     document.querySelector('button').style.backgroundColor = color;
 }
 
-// Change background image every hour
 function changeBackgroundImage() {
     const imageUrl = `https://source.unsplash.com/1600x900/?nature,water&${new Date().getTime()}`;
     const img = new Image();
@@ -68,9 +62,8 @@ function changeBackgroundImage() {
 }
 
 changeBackgroundImage();
-setInterval(changeBackgroundImage, 60000); // Change every hour
+setInterval(changeBackgroundImage, 60000); // Change every minute
 
-// Add smooth animations to countdown sections
 document.querySelectorAll('.time-section').forEach(el => {
     el.style.transition = 'transform 0.3s, background-color 0.3s';
 });
