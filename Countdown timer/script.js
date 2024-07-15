@@ -61,7 +61,7 @@ function changeBackgroundImage() {
 
 // Change background image every minute
 changeBackgroundImage();
-setInterval(changeBackgroundImage, 60000);
+setInterval(changeBackgroundImage, 5 * 60 * 1000);
 
 document.querySelectorAll('.time-section').forEach(el => {
     el.style.transition = 'transform 0.3s, background-color 0.3s';
