@@ -1,0 +1,105 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('https://source.unsplash.com/1600x900/?nature,water');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: 600px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.input-section, .theme-section {
+    margin-bottom: 1rem;
+}
+
+input[type="datetime-local"], button {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357ae8;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.time-section {
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    min-width: 100px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.time-section:hover {
+    transform: scale(1.05);
+}
+
+.time-section span {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#eventName {
+    margin-top: 1rem;
+    font-size: 1.2em;
+    color: #333;
+    cursor: pointer;
+}
+
+@media (max-width: 600px){
+     .container{
+        padding: 1rem;
+     }
+
+     .time-section{
+        min-width: 80px;
+     }
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 0.5s ease-in-out;
+}
