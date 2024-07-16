@@ -51,31 +51,30 @@ function changeTheme() {
 }
 
 const backgroundImages = [
-    'https://source.unsplash.com/random/1920x1080?nature',
-    'https://source.unsplash.com/random/1920x1080?city',
-    'https://source.unsplash.com/random/1920x1080?landscape',
-    'https://source.unsplash.com/random/1920x1080?architecture',
-    'https://source.unsplash.com/random/1920x1080?technology'
+    'https://picsum.photos/1920/1080?random=1',
+    'https://picsum.photos/1920/1080?random=2',
+    'https://picsum.photos/1920/1080?random=3',
+    'https://picsum.photos/1920/1080?random=4',
+    'https://picsum.photos/1920/1080?random=5'
 ];
 
-let currentImageIndex = 0;
-
 function changeBackgroundImage() {
-    currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-    const imageUrl = backgroundImages[currentImageIndex];
-    const img = new Image();
-    img.onload = function() {
-        document.body.style.backgroundImage = `url('${imageUrl}')`;
-    }
-    img.onerror = function() {
-        console.error('Failed to load image:', imageUrl);
-    }
-    img.src = imageUrl;
+    const now = new Date();
+    const minutes = now.getMinutes();
+    const imageIndex = minutes % backgroundImages.length;
+    const imageUrl = backgroundImages[imageIndex];
+    
+    document.body.style.backgroundImage = `url('${imageUrl}')`;
+    console.log('Background image set to:', imageUrl);
+
+    // Set timeout for next minute change
+    const secondsUntilNextMinute = 60 - now.getSeconds();
+    setTimeout(changeBackgroundImage, secondsUntilNextMinute * 1000);
 }
 
-// Change background image every minute
+// Initial call to set the background and start the cycle
 changeBackgroundImage();
-setInterval(changeBackgroundImage, 1 * 60 * 1000);
+setTimer(changeBackgroundImage, 1 * 60 * 1000);
 
 document.querySelectorAll('.time-section').forEach(el => {
     el.style.transition = 'transform 0.3s, background-color 0.3s';

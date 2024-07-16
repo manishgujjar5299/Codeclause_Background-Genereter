@@ -5,9 +5,10 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('https://i.pinimg.com/564x/0a/f7/74/0af7741991985e2b530c8f62135c3eea.jpg');
+    /* background-image: url('https://source.unsplash.com/random/1920x1080?nature'); */
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     transition: background-image 1s ease-in-out;
 }
 
