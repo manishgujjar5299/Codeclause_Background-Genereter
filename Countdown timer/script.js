@@ -50,9 +50,19 @@ function changeTheme() {
     document.querySelector('button').style.backgroundColor = color;
 }
 
+const backgroundImages = [
+    'https://example.com/image1.jpg',
+    'https://example.com/image2.jpg',
+    'https://example.com/image3.jpg',
+    'https://example.com/image4.jpg',
+    'https://example.com/image5.jpg'
+]
+
+let currentImageIndex = 0;
+
 function changeBackgroundImage() {
-    const imageUrl = `https://i.pinimg.com/564x/0a/f7/74/0af7741991985e2b530c8f62135c3eea.jpg&${new Date().getTime()}`;
-    const img = new Image();
+    currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+    const imageUrl = backgroundImages[currentImageIndex];    const img = new Image();
     img.onload = function() {
         document.body.style.backgroundImage = `url('${imageUrl}')`;
     }
@@ -63,6 +73,6 @@ function changeBackgroundImage() {
 changeBackgroundImage();
 setInterval(changeBackgroundImage, 5 * 60 * 1000);
 
-document.querySelectorAll('.time-section').forEach(el => {
-    el.style.transition = 'transform 0.3s, background-color 0.3s';
-});
+// document.querySelectorAll('.time-section').forEach(el => {
+//     el.style.transition = 'transform 0.3s, background-color 0.3s';
+// });
