@@ -51,28 +51,32 @@ function changeTheme() {
 }
 
 const backgroundImages = [
-    'https://example.com/image1.jpg',
-    'https://example.com/image2.jpg',
-    'https://example.com/image3.jpg',
-    'https://example.com/image4.jpg',
-    'https://example.com/image5.jpg'
-]
+    'https://source.unsplash.com/random/1920x1080?nature',
+    'https://source.unsplash.com/random/1920x1080?city',
+    'https://source.unsplash.com/random/1920x1080?landscape',
+    'https://source.unsplash.com/random/1920x1080?architecture',
+    'https://source.unsplash.com/random/1920x1080?technology'
+];
 
 let currentImageIndex = 0;
 
 function changeBackgroundImage() {
     currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-    const imageUrl = backgroundImages[currentImageIndex];    const img = new Image();
+    const imageUrl = backgroundImages[currentImageIndex];
+    const img = new Image();
     img.onload = function() {
         document.body.style.backgroundImage = `url('${imageUrl}')`;
+    }
+    img.onerror = function() {
+        console.error('Failed to load image:', imageUrl);
     }
     img.src = imageUrl;
 }
 
 // Change background image every minute
 changeBackgroundImage();
-setInterval(changeBackgroundImage, 5 * 60 * 1000);
+setInterval(changeBackgroundImage, 1 * 60 * 1000);
 
-// document.querySelectorAll('.time-section').forEach(el => {
-//     el.style.transition = 'transform 0.3s, background-color 0.3s';
-// });
+document.querySelectorAll('.time-section').forEach(el => {
+    el.style.transition = 'transform 0.3s, background-color 0.3s';
+});
