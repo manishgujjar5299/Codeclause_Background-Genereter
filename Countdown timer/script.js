@@ -43,7 +43,9 @@ function formatDate(date) {
         month: 'long', 
         day: 'numeric', 
         hour: '2-digit', 
-        minute: '2-digit'
+        minute: '2-digit',
+        hour12: true
+
     };
     return date.toLocaleDateString('en-US', options);
 }
@@ -54,15 +56,18 @@ function formatDate(date) {
 
 
 function startCountdown() {
-    if (countdownInterval) {
-        clearInterval(countdownInterval);
+    if (events.length === 0) {
+        alert("Please add an event before starting the countdown.");
+        return;
     }
-    
-    const eventDateTime = new Date(document.getElementById("eventDateTime").value).getTime();
-    
-    countdownInterval = setInterval(function() {
-        const now = new Date().getTime();
-        const distance = eventDateTime - now;
+
+    const nextEvent = events[0];
+    updateCountdown(nextEvent.date);
+}
+
+function updateCountdown(eventDate) {
+    const now = new Date().getTime();
+    const distance = eventDate.getTime() - now;
         
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -78,11 +83,31 @@ function startCountdown() {
             clearInterval(countdownInterval);
             document.getElementById("countdown").innerHTML = "<h2>EVENT HAS STARTED</h2>";
         }
-    }, 1000);
+        else {
+            setTimeout(() => updateCountdown(eventDate), 1000);
+        }
+    }
 
+    // Initialize event listeners when the page loads
+document.addEventListener("DOMContentLoaded", function() {
+    const eventNameElement = document.getElementById("eventName");
+    eventNameElement.addEventListener("focus", function() {
+        if (this.textContent === "Click to edit event name") {
+            this.textContent = "";
+        }
+    });
+
+    eventNameElement.addEventListener("blur", function() {
+        if (this.textContent.trim() === "") {
+            this.textContent = "Click to edit event name";
+        }
+    });
+
+    document.querySelector("button").addEventListener("click", addEvent);
+});
     // Start color changing for timer sections
     startColorChange();
-}
+
 
 function startColorChange() {
     if (colorChangeInterval) {
