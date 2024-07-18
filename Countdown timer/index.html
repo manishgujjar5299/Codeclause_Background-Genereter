@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h1> Countdown Timer</h1>
+        <h1> Event Countdown Timer</h1>
         <div class="input-section">
             <input type="datetime-local" id="eventDateTime">
             <button onclick="startCountdown()">Start Countdown</button>
@@ -18,6 +18,13 @@
             <label for="themeColor">Choose theme color:</label>
             <input type="color" id="themeColor" value="#4a90e2" onchange="changeTheme()">
         </div>
+        <div class="input-section">
+            <input type="datetime-local" id="eventDateTime">
+            <input type="text" id="eventName" placeholder="Enter event name">
+            <button onclick="addEvent()">Add Event</button>
+            <button onclick="startCountdown()">Start Countdown</button>
+        </div>
+        <div id="eventList"></div>
         <div id="countdown">
             <div class="time-section">
                 <span id="days">0</span>

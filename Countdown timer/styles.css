@@ -105,3 +105,26 @@ button:hover {
 .pulse {
     animation: pulse 0.5s ease-in-out;
 }
+#eventList {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.event-item {
+    background-color: #f0f0f0;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-item button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    border-radius: 3px;
+}

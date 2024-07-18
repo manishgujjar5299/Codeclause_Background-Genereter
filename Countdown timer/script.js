@@ -1,12 +1,54 @@
 let countdownInterval;
 let colorChangeInterval;
+let events = [];
+
+function addEvent() {
+    const eventDateTime = document.getElementById("eventDateTime").value;
+    const eventName = document.getElementById("eventName").value;
+    
+    if (eventDateTime && eventName) {
+        events.push({ date: new Date(eventDateTime), name: eventName });
+        updateEventList();
+        document.getElementById("eventName").value = "";
+        document.getElementById("eventDateTime").value = "";
+    } else {
+        alert("Please enter both event date/time and name.");
+    }
+}
+
+function updateEventList() {
+    const eventList = document.getElementById("eventList");
+    eventList.innerHTML = "";
+    events.sort((a, b) => a.date - b.date);
+    
+    events.forEach((event, index) => {
+        const eventItem = document.createElement("div");
+        eventItem.className = "event-item";
+        eventItem.innerHTML = `
+            <span>${event.name} - ${event.date.toLocaleString()}</span>
+            <button onclick="removeEvent(${index})">Remove</button>
+        `;
+        eventList.appendChild(eventItem);
+    });
+}
+
+function removeEvent(index) {
+    events.splice(index, 1);
+    updateEventList();
+}
 
 function startCountdown() {
+    if (events.length === 0) {
+        alert("Please add at least one event before starting the countdown.");
+        return;
+    }
+
     if (countdownInterval) {
         clearInterval(countdownInterval);
     }
     
-    const eventDateTime = new Date(document.getElementById("eventDateTime").value).getTime();
+    const nextEvent = events[0];
+    
     
     countdownInterval = setInterval(function() {
         const now = new Date().getTime();
@@ -25,6 +67,11 @@ function startCountdown() {
         if (distance < 0) {
             clearInterval(countdownInterval);
             document.getElementById("countdown").innerHTML = "<h2>EVENT HAS STARTED</h2>";
+            EventSource.shift();
+            updateEventList();
+            if (EventSource.length > 0){
+                startCountdown();
+            }
         }
     }, 1000);
 
