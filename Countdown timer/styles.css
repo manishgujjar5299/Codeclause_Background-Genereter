@@ -120,6 +120,22 @@ button:hover {
     align-items: center;
 }
 
+.event-date {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+
+.event-name {
+    flex-grow: 1;
+    cursor: text;
+}
+
+.event-name:focus {
+    outline: none;
+    background-color: #ffffff;
+}
+
 .event-item button {
     background-color: #ff4d4d;
     color: white;

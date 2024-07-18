@@ -48,7 +48,7 @@ function startCountdown() {
     }
     
     const nextEvent = events[0];
-    
+    Date(document.getElementById("eventDateTime").value).getTime();
     
     countdownInterval = setInterval(function() {
         const now = new Date().getTime();
