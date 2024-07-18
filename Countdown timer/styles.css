@@ -14,12 +14,16 @@ body {
 
 .container {
     text-align: center;
-    background-color: #C5FFF8;
+    background-color: transparent;/* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Apply blur effect for Safari */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 90%;
     width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Add a border for better effect */
+    
 }
 
 h1 {
@@ -115,23 +119,26 @@ button:hover {
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 5px;
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
 }
 
-.event-date {
+/* .event-date {
     font-weight: bold;
     margin-right: 1rem;
-}
+} */
 
 
-.event-name {
-    flex-grow: 1;
+#eventName {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     cursor: text;
 }
 
-.event-name:focus {
+/* .event-name:focus {
     outline: none;
     background-color: #ffffff;
 }
@@ -143,4 +150,4 @@ button:hover {
     padding: 0.25rem 0.5rem;
     cursor: pointer;
     border-radius: 3px;
-}
+} */

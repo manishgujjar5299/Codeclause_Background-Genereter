@@ -20,16 +20,12 @@
         </div>
         <div class="input-section">
             <input type="datetime-local" id="eventDateTime">
-            <input type="text" id="eventName" placeholder="Enter event name">
+            <div id="eventName" contenteditable="true">Click to edit event name</div>
             <button onclick="addEvent()">Add Event</button>
-            <button onclick="startCountdown()">Start Countdown</button>
         </div>
-        <div id="eventList">
-            <div class="event-item">
-                <span class="event-date"></span>
-                <span class="event-name" contenteditable="true">Click to add event</span>
-            </div>
-        </div>
+
+        <div id="eventList"></div>
+        
         <div id="countdown">
             <div class="time-section">
                 <span id="days">0</span>
@@ -48,7 +44,7 @@
                 <p>Seconds</p>
             </div>
         </div>
-        <div id="eventName" contenteditable="true">Click to edit event name</div>
+        <!-- <div id="eventName" contenteditable="true">Click to edit event name</div> -->
     </div>
     <script src="script.js"></script>
 </body>
