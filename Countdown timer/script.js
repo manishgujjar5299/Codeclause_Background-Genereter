@@ -37,22 +37,23 @@ function startColorChange() {
         clearInterval(colorChangeInterval);
     }
     
-    const darkColors = [
-        '#1a1a1a', // Almost Black
-        '#2c3e50', // Dark Blue
-        '#34495e', // Midnight Blue
-        '#4a4a4a', // Dark Gray
-        '#2e2e2e', // Charcoal
-        '#3d3d3d', // Dark Slate Gray
-        '#1c2833', // Very Dark Blue
-        '#273746', // Another Dark Blue
-        '#212f3d'  // Dark Navy
+    const colors = [
+        { bg: '#1a1a1a', text: '#ffffff' }, // Almost Black, White text
+        { bg: '#2c3e50', text: '#ffffff' }, // Dark Blue, White text
+        { bg: '#34495e', text: '#ffffff' }, // Midnight Blue, White text
+        { bg: '#4a4a4a', text: '#ffffff' }, // Dark Gray, White text
+        { bg: '#2e2e2e', text: '#ffffff' }, // Charcoal, White text
+        { bg: '#3d3d3d', text: '#ffffff' }, // Dark Slate Gray, White text
+        { bg: '#f0f0f0', text: '#000000' }, // Light Gray, Black text
+        { bg: '#e0e0e0', text: '#000000' }, // Another Light Gray, Black text
+        { bg: '#d3d3d3', text: '#000000' }  // Light Gray, Black text
     ];
-    
+
     colorChangeInterval = setInterval(function() {
-        const randomDarkColor = darkColors[Math.floor(Math.random()* darkColors.length)];
+        const randomColor = colors[Math.floor(Math.random()* colors.length)];
         document.querySelectorAll('.time-section').forEach(el => {
-            el.style.backgroundColor = randomDarkColor;
+            el.style.backgroundColor = randomColor.bg;
+            el.style.color = randomColor.text;
         });
     }, 1000); // Change color every second
 }
