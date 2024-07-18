@@ -37,10 +37,22 @@ function startColorChange() {
         clearInterval(colorChangeInterval);
     }
     
+    const darkColors = [
+        '#1a1a1a', // Almost Black
+        '#2c3e50', // Dark Blue
+        '#34495e', // Midnight Blue
+        '#4a4a4a', // Dark Gray
+        '#2e2e2e', // Charcoal
+        '#3d3d3d', // Dark Slate Gray
+        '#1c2833', // Very Dark Blue
+        '#273746', // Another Dark Blue
+        '#212f3d'  // Dark Navy
+    ];
+    
     colorChangeInterval = setInterval(function() {
-        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        const randomDarkColor = darkColors[Math.floor(Math.random()* darkColors.length)];
         document.querySelectorAll('.time-section').forEach(el => {
-            el.style.backgroundColor = "#" + randomColor;
+            el.style.backgroundColor = randomDarkColor;
         });
     }, 1000); // Change color every second
 }
