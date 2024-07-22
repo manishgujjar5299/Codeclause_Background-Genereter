@@ -88,26 +88,9 @@ function updateCountdown(eventDate) {
         }
     }
 
-    // Initialize event listeners when the page loads
-document.addEventListener("DOMContentLoaded", function() {
-    const eventNameElement = document.getElementById("eventName");
-    eventNameElement.addEventListener("focus", function() {
-        if (this.textContent === "Click to edit event name") {
-            this.textContent = "";
-        }
-    });
-
-    eventNameElement.addEventListener("blur", function() {
-        if (this.textContent.trim() === "") {
-            this.textContent = "Click to edit event name";
-        }
-    });
-
-    document.querySelector("button").addEventListener("click", addEvent);
-});
+    
     // Start color changing for timer sections
     startColorChange();
-
 
 function startColorChange() {
     if (colorChangeInterval) {
